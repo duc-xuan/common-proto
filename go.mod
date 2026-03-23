@@ -1,4 +1,4 @@
-module common-proto
+module github.com/duc-xuan/common-proto
 
 go 1.24.0
 
