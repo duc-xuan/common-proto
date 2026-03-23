@@ -7,11 +7,12 @@
 package userpb
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -23,9 +24,8 @@ const (
 
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Role          string                 `protobuf:"bytes,3,opt,name=role,proto3" json:"role,omitempty"`
+	AccountId     string                 `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	FullName      string                 `protobuf:"bytes,2,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -60,23 +60,16 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_proto_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateUserRequest) GetName() string {
+func (x *CreateUserRequest) GetAccountId() string {
 	if x != nil {
-		return x.Name
+		return x.AccountId
 	}
 	return ""
 }
 
-func (x *CreateUserRequest) GetEmail() string {
+func (x *CreateUserRequest) GetFullName() string {
 	if x != nil {
-		return x.Email
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetRole() string {
-	if x != nil {
-		return x.Role
+		return x.FullName
 	}
 	return ""
 }
@@ -130,11 +123,11 @@ var File_user_proto_user_proto protoreflect.FileDescriptor
 const file_user_proto_user_proto_rawDesc = "" +
 	"\n" +
 	"\x15user-proto/user.proto\x12\n" +
-	"user_proto\"Q\n" +
-	"\x11CreateUserRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04role\"-\n" +
+	"user_proto\"O\n" +
+	"\x11CreateUserRequest\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x01 \x01(\tR\taccountId\x12\x1b\n" +
+	"\tfull_name\x18\x02 \x01(\tR\bfullName\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId2Z\n" +
 	"\vUserService\x12K\n" +

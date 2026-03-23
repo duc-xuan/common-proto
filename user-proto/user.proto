@@ -9,9 +9,8 @@ service UserService {
 option go_package = "user-proto/userpb";
 
 message CreateUserRequest {
-  string name = 1;
-  string email = 2;
-  string role = 3;
+  string account_id = 1;
+  string full_name = 2;
 }
 
 message CreateUserResponse {
