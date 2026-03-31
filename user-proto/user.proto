@@ -11,6 +11,7 @@ option go_package = "user-proto/userpb";
 message CreateUserRequest {
   string account_id = 1;
   string full_name = 2;
+  string role = 3;
 }
 
 message CreateUserResponse {
