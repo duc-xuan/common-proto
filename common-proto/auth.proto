@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package common_proto;
+
+option go_package = "common-proto/authpb";
+
+message AccountRequest {
+  string account_id = 1;
+}
+
+message AccountResponse {
+  bool success = 1;
+}
+
+service AuthService {
+  rpc CloseAccount (AccountRequest) returns (AccountResponse);
+}

@@ -1,12 +1,8 @@
 syntax = "proto3";
 
-package user_proto;
+package common_proto;
 
-service UserService {
-  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
-}
-
-option go_package = "user-proto/userpb";
+option go_package = "common-proto/userpb";
 
 message CreateUserRequest {
   string account_id = 1;
@@ -18,3 +14,6 @@ message CreateUserResponse {
   string user_id = 1;
 }
 
+service UserService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+}

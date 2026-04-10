@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package common_proto;
+
+option go_package = "common-proto/bookingpb";
+
+message ContractRequest{
+    string job_id = 1;
+}
+
+message InformationResponse{
+    string customer_id = 1;
+    string freelancer_id = 2;
+    string work_status = 3;
+}
+
+service AuthService {
+  rpc CheckBookingStatus (ContractRequest) returns (InformationResponse);
+}
