@@ -137,8 +137,8 @@ const file_common_proto_booking_proto_rawDesc = "" +
 	"customerId\x12#\n" +
 	"\rfreelancer_id\x18\x02 \x01(\tR\ffreelancerId\x12\x1f\n" +
 	"\vwork_status\x18\x03 \x01(\tR\n" +
-	"workStatus2e\n" +
-	"\vAuthService\x12V\n" +
+	"workStatus2h\n" +
+	"\x0eBookingService\x12V\n" +
 	"\x12CheckBookingStatus\x12\x1d.common_proto.ContractRequest\x1a!.common_proto.InformationResponseB\x18Z\x16common-proto/bookingpbb\x06proto3"
 
 var (
@@ -159,8 +159,8 @@ var file_common_proto_booking_proto_goTypes = []any{
 	(*InformationResponse)(nil), // 1: common_proto.InformationResponse
 }
 var file_common_proto_booking_proto_depIdxs = []int32{
-	0, // 0: common_proto.AuthService.CheckBookingStatus:input_type -> common_proto.ContractRequest
-	1, // 1: common_proto.AuthService.CheckBookingStatus:output_type -> common_proto.InformationResponse
+	0, // 0: common_proto.BookingService.CheckBookingStatus:input_type -> common_proto.ContractRequest
+	1, // 1: common_proto.BookingService.CheckBookingStatus:output_type -> common_proto.InformationResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

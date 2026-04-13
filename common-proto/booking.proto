@@ -14,6 +14,6 @@ message InformationResponse{
     string work_status = 3;
 }
 
-service AuthService {
+service BookingService {
   rpc CheckBookingStatus (ContractRequest) returns (InformationResponse);
 }

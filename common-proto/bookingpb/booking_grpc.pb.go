@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_CheckBookingStatus_FullMethodName = "/common_proto.AuthService/CheckBookingStatus"
+	BookingService_CheckBookingStatus_FullMethodName = "/common_proto.BookingService/CheckBookingStatus"
 )
 
-// AuthServiceClient is the client API for AuthService service.
+// BookingServiceClient is the client API for BookingService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AuthServiceClient interface {
+type BookingServiceClient interface {
 	CheckBookingStatus(ctx context.Context, in *ContractRequest, opts ...grpc.CallOption) (*InformationResponse, error)
 }
 
-type authServiceClient struct {
+type bookingServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
-	return &authServiceClient{cc}
+func NewBookingServiceClient(cc grpc.ClientConnInterface) BookingServiceClient {
+	return &bookingServiceClient{cc}
 }
 
-func (c *authServiceClient) CheckBookingStatus(ctx context.Context, in *ContractRequest, opts ...grpc.CallOption) (*InformationResponse, error) {
+func (c *bookingServiceClient) CheckBookingStatus(ctx context.Context, in *ContractRequest, opts ...grpc.CallOption) (*InformationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(InformationResponse)
-	err := c.cc.Invoke(ctx, AuthService_CheckBookingStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, BookingService_CheckBookingStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AuthServiceServer is the server API for AuthService service.
-// All implementations must embed UnimplementedAuthServiceServer
+// BookingServiceServer is the server API for BookingService service.
+// All implementations must embed UnimplementedBookingServiceServer
 // for forward compatibility.
-type AuthServiceServer interface {
+type BookingServiceServer interface {
 	CheckBookingStatus(context.Context, *ContractRequest) (*InformationResponse, error)
-	mustEmbedUnimplementedAuthServiceServer()
+	mustEmbedUnimplementedBookingServiceServer()
 }
 
-// UnimplementedAuthServiceServer must be embedded to have
+// UnimplementedBookingServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedAuthServiceServer struct{}
+type UnimplementedBookingServiceServer struct{}
 
-func (UnimplementedAuthServiceServer) CheckBookingStatus(context.Context, *ContractRequest) (*InformationResponse, error) {
+func (UnimplementedBookingServiceServer) CheckBookingStatus(context.Context, *ContractRequest) (*InformationResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CheckBookingStatus not implemented")
 }
-func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
-func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
+func (UnimplementedBookingServiceServer) mustEmbedUnimplementedBookingServiceServer() {}
+func (UnimplementedBookingServiceServer) testEmbeddedByValue()                        {}
 
-// UnsafeAuthServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AuthServiceServer will
+// UnsafeBookingServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BookingServiceServer will
 // result in compilation errors.
-type UnsafeAuthServiceServer interface {
-	mustEmbedUnimplementedAuthServiceServer()
+type UnsafeBookingServiceServer interface {
+	mustEmbedUnimplementedBookingServiceServer()
 }
 
-func RegisterAuthServiceServer(s grpc.ServiceRegistrar, srv AuthServiceServer) {
-	// If the following call panics, it indicates UnimplementedAuthServiceServer was
+func RegisterBookingServiceServer(s grpc.ServiceRegistrar, srv BookingServiceServer) {
+	// If the following call panics, it indicates UnimplementedBookingServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&AuthService_ServiceDesc, srv)
+	s.RegisterService(&BookingService_ServiceDesc, srv)
 }
 
-func _AuthService_CheckBookingStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BookingService_CheckBookingStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ContractRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).CheckBookingStatus(ctx, in)
+		return srv.(BookingServiceServer).CheckBookingStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AuthService_CheckBookingStatus_FullMethodName,
+		FullMethod: BookingService_CheckBookingStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).CheckBookingStatus(ctx, req.(*ContractRequest))
+		return srv.(BookingServiceServer).CheckBookingStatus(ctx, req.(*ContractRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
+// BookingService_ServiceDesc is the grpc.ServiceDesc for BookingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var AuthService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "common_proto.AuthService",
-	HandlerType: (*AuthServiceServer)(nil),
+var BookingService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "common_proto.BookingService",
+	HandlerType: (*BookingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CheckBookingStatus",
-			Handler:    _AuthService_CheckBookingStatus_Handler,
+			Handler:    _BookingService_CheckBookingStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
