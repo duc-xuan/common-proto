@@ -4,7 +4,7 @@
 // 	protoc        v4.25.9
 // source: common-proto/payment.proto
 
-package payment
+package paymentpb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -406,7 +406,7 @@ const file_common_proto_payment_proto_rawDesc = "" +
 	"\fCreateWallet\x12\x1b.common_proto.WalletRequest\x1a\x1c.common_proto.WalletResponse\x12K\n" +
 	"\fCheckBalance\x12\x1c.common_proto.BalanceRequest\x1a\x1d.common_proto.BalanceResponse\x12I\n" +
 	"\fCreateEscrow\x12\x1b.common_proto.EscrowRequest\x1a\x1c.common_proto.EscrowResponse\x12J\n" +
-	"\rProcessEscrow\x12\x1b.common_proto.EscrowRequest\x1a\x1c.common_proto.EscrowResponseB\x16Z\x14common-proto/paymentb\x06proto3"
+	"\rProcessEscrow\x12\x1b.common_proto.EscrowRequest\x1a\x1c.common_proto.EscrowResponseB\x18Z\x16common-proto/paymentpbb\x06proto3"
 
 var (
 	file_common_proto_payment_proto_rawDescOnce sync.Once
