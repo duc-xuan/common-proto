@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package common_proto;
+
+option go_package = "common-proto/payment";
+
+enum EscrowStatus {
+    ESCROW_STATUS_PENDING = 0;
+    ESCROW_STATUS_SUCCESS = 1;
+    ESCROW_STATUS_FAILED = 2;
+}
+
+message WalletRequest {
+    string user_id = 1;
+}
+
+message WalletResponse {
+    bool success = 1;
+}
+
+message EscrowRequest {
+    string contract_id = 1;
+    string customer_id = 2;
+    string freelancer_id = 3;
+    string amount = 4;
+    EscrowStatus status = 5;
+}
+
+message EscrowResponse {
+    bool success = 1;
+}
+
+message BalanceRequest {
+    string user_id = 1;
+    string amount = 2;
+}
+
+message BalanceResponse {
+    bool valid = 1;
+}
+
+service PaymentService {
+    rpc CreateWallet (WalletRequest) returns (WalletResponse);
+    rpc CheckBalance (BalanceRequest) returns (BalanceResponse);
+    rpc CreateEscrow (EscrowRequest) returns (EscrowResponse);
+    rpc ProcessEscrow (EscrowRequest) returns (EscrowResponse);
+}
