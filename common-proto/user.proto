@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common_proto;
 
-option go_package = "common-proto/userpb";
+option go_package = "/userpb";
 
 message CreateUserRequest {
   string account_id = 1;

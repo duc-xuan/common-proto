@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common_proto;
 
-option go_package = "common-proto/bookingpb";
+option go_package = "/bookingpb";
 
 message ContractRequest{
     string job_id = 1;

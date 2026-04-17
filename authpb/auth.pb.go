@@ -120,7 +120,7 @@ const file_common_proto_auth_proto_rawDesc = "" +
 	"\x0fAccountResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2Z\n" +
 	"\vAuthService\x12K\n" +
-	"\fCloseAccount\x12\x1c.common_proto.AccountRequest\x1a\x1d.common_proto.AccountResponseB\x15Z\x13common-proto/authpbb\x06proto3"
+	"\fCloseAccount\x12\x1c.common_proto.AccountRequest\x1a\x1d.common_proto.AccountResponseB\tZ\a/authpbb\x06proto3"
 
 var (
 	file_common_proto_auth_proto_rawDescOnce sync.Once

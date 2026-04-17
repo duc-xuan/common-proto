@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common_proto;
 
-option go_package = "common-proto/paymentpb";
+option go_package = "/paymentpb";
 
 enum EscrowStatus {
     ESCROW_STATUS_HELD = 0;
