@@ -24,22 +24,28 @@ const (
 type EscrowStatus int32
 
 const (
-	EscrowStatus_ESCROW_STATUS_PENDING EscrowStatus = 0
-	EscrowStatus_ESCROW_STATUS_SUCCESS EscrowStatus = 1
-	EscrowStatus_ESCROW_STATUS_FAILED  EscrowStatus = 2
+	EscrowStatus_ESCROW_STATUS_HELD             EscrowStatus = 0
+	EscrowStatus_ESCROW_STATUS_RELEASED         EscrowStatus = 1
+	EscrowStatus_ESCROW_STATUS_REFUNDED         EscrowStatus = 2
+	EscrowStatus_ESCROW_STATUS_PARTIAL_REFUNDED EscrowStatus = 3
+	EscrowStatus_ESCROW_STATUS_DISPUTED         EscrowStatus = 4
 )
 
 // Enum value maps for EscrowStatus.
 var (
 	EscrowStatus_name = map[int32]string{
-		0: "ESCROW_STATUS_PENDING",
-		1: "ESCROW_STATUS_SUCCESS",
-		2: "ESCROW_STATUS_FAILED",
+		0: "ESCROW_STATUS_HELD",
+		1: "ESCROW_STATUS_RELEASED",
+		2: "ESCROW_STATUS_REFUNDED",
+		3: "ESCROW_STATUS_PARTIAL_REFUNDED",
+		4: "ESCROW_STATUS_DISPUTED",
 	}
 	EscrowStatus_value = map[string]int32{
-		"ESCROW_STATUS_PENDING": 0,
-		"ESCROW_STATUS_SUCCESS": 1,
-		"ESCROW_STATUS_FAILED":  2,
+		"ESCROW_STATUS_HELD":             0,
+		"ESCROW_STATUS_RELEASED":         1,
+		"ESCROW_STATUS_REFUNDED":         2,
+		"ESCROW_STATUS_PARTIAL_REFUNDED": 3,
+		"ESCROW_STATUS_DISPUTED":         4,
 	}
 )
 
@@ -231,7 +237,7 @@ func (x *EscrowRequest) GetStatus() EscrowStatus {
 	if x != nil {
 		return x.Status
 	}
-	return EscrowStatus_ESCROW_STATUS_PENDING
+	return EscrowStatus_ESCROW_STATUS_HELD
 }
 
 type EscrowResponse struct {
@@ -397,11 +403,13 @@ const file_common_proto_payment_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x16\n" +
 	"\x06amount\x18\x02 \x01(\tR\x06amount\"'\n" +
 	"\x0fBalanceResponse\x12\x14\n" +
-	"\x05valid\x18\x01 \x01(\bR\x05valid*^\n" +
-	"\fEscrowStatus\x12\x19\n" +
-	"\x15ESCROW_STATUS_PENDING\x10\x00\x12\x19\n" +
-	"\x15ESCROW_STATUS_SUCCESS\x10\x01\x12\x18\n" +
-	"\x14ESCROW_STATUS_FAILED\x10\x022\xbf\x02\n" +
+	"\x05valid\x18\x01 \x01(\bR\x05valid*\x9e\x01\n" +
+	"\fEscrowStatus\x12\x16\n" +
+	"\x12ESCROW_STATUS_HELD\x10\x00\x12\x1a\n" +
+	"\x16ESCROW_STATUS_RELEASED\x10\x01\x12\x1a\n" +
+	"\x16ESCROW_STATUS_REFUNDED\x10\x02\x12\"\n" +
+	"\x1eESCROW_STATUS_PARTIAL_REFUNDED\x10\x03\x12\x1a\n" +
+	"\x16ESCROW_STATUS_DISPUTED\x10\x042\xbf\x02\n" +
 	"\x0ePaymentService\x12I\n" +
 	"\fCreateWallet\x12\x1b.common_proto.WalletRequest\x1a\x1c.common_proto.WalletResponse\x12K\n" +
 	"\fCheckBalance\x12\x1c.common_proto.BalanceRequest\x1a\x1d.common_proto.BalanceResponse\x12I\n" +
