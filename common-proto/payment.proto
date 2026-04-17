@@ -22,10 +22,11 @@ message WalletResponse {
 
 message EscrowRequest {
     string contract_id = 1;
-    string customer_id = 2;
-    string freelancer_id = 3;
-    string amount = 4;
-    EscrowStatus status = 5;
+    string dispute_id = 2;
+    string customer_id = 3;
+    string freelancer_id = 4;
+    string amount = 5;
+    EscrowStatus status = 6;
 }
 
 message EscrowResponse {
