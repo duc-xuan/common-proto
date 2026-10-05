@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+package common_proto;
+
+option go_package = "/notificationpb";
+
+service NotificationService {
+    rpc CreateUserSetting (CreateUserSettingRequest) returns (NotiResponse);
+    rpc NewJobForCategory (NewJobForCategoryRequest) returns (NotiResponse);
+    rpc ApplyForJob (ApplyForJobRequest) returns (NotiResponse);
+    rpc AcceptJob (AcceptJobRequest) returns (NotiResponse);
+    rpc UpdateStatusContract (UpdateStatusContractRequest) returns (NotiResponse);
+    rpc NotificationDisputeForAdmin (NotificationDisputeForAdminRequest) returns (NotiResponse);
+    rpc NotificationDisputeResolution (NotificationDisputeResolutionRequest) returns (NotiResponse);
+    rpc ChangeBalance (ChangeBalanceRequest) returns (NotiResponse);
+    rpc Dispatch (DispatchNotificationRequest) returns (DispatchNotificationResponse);
+}
+
+message CreateUserSettingRequest {
+    string user_id = 1;
+    optional bool enable_in_app = 2;
+    optional bool enable_email = 3;
+    optional bool enable_push = 4;
+    repeated string muted_categories = 5;
+}
+
+message NewJobForCategoryRequest {
+    string job_id = 1;
+    int32 category_id = 2;
+    string job_title = 3;
+    string description = 4;
+    string customer_id = 5;
+    repeated string recipient_user_ids = 6;
+}
+
+message ApplyForJobRequest {
+    string application_id = 1;
+    string job_id = 2;
+    string customer_id = 3;
+    string freelancer_id = 4;
+    double bid_amount = 5;
+    string note = 6;
+}
+
+message AcceptJobRequest {
+    string job_id = 1;
+    string application_id = 2;
+    string contract_id = 3;
+    string customer_id = 4;
+    string freelancer_id = 5;
+    double accepted_amount = 6;
+}
+
+message UpdateStatusContractRequest {
+    string contract_id = 1;
+    string job_id = 2;
+    string customer_id = 3;
+    string freelancer_id = 4;
+    string new_status = 5;
+    string updated_by = 6;
+}
+
+message NotificationDisputeForAdminRequest {
+    string dispute_id = 1;
+    string job_id = 2;
+    string contract_id = 3;
+    string requester_id = 4;
+    string reason_code = 5;
+    string description = 6;
+    repeated string admin_user_ids = 7;
+}
+
+message NotificationDisputeResolutionRequest {
+    string dispute_id = 1;
+    string contract_id = 2;
+    string customer_id = 3;
+    string freelancer_id = 4;
+    string resolution_type = 5;
+    string admin_note = 6;
+    double refund_amount = 7;
+    double payout_amount = 8;
+}
+
+message ChangeBalanceRequest {
+    string user_id = 1;
+    string transaction_id = 2;
+    string transaction_type = 3;
+    string transaction_status = 4;
+    double amount = 5;
+    optional double balance_after = 6;
+}
+
+message NotiResponse {
+    bool success = 1;
+    string message = 2;
+    repeated string notification_ids = 3;
+}
+
+message DispatchNotificationRequest {
+    string user_id = 1;
+    string title = 2;
+    string content = 3;
+    string category = 4;
+    string channel = 5;
+    string source_service = 6;
+    string reference_id = 7;
+}
+
+message DispatchNotificationResponse {
+    string id = 1;
+    string user_id = 2;
+    string title = 3;
+    string content = 4;
+    string category = 5;
+    string channel = 6;
+    string source_service = 7;
+    string reference_id = 8;
+    string status = 9;
+}
